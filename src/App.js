@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+import Form from './components/Form';
+import TaskList from './components/TaskList';
 
 function App() {
   const [text, setText] = useState('')
@@ -30,17 +32,8 @@ function App() {
   }
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
-        <button>add task</button>
-      </form>
-      <ul>
-        {tasks.map(task => <li key={task.id}>
-          <input type="checkbox" className="check" checked={task.completed} onChange={() => toggleCheck(task.id)} />
-          <span>{task.text}</span>
-          <span className='close' onClick={() => removeTask(task.id)}>&#10006;</span>
-        </li>)}
-      </ul>
+      <Form handleSubmit={handleSubmit} text={text} setText={setText} />
+      <TaskList tasks={tasks} toggleCheck={toggleCheck} removeTask={removeTask} />
     </div>
   );
 }
