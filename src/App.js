@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
 import Form from './components/Form';
 import TaskList from './components/TaskList';
 
 function App() {
-  const [text, setText] = useState('')
+  const text = useSelector((state) => state.text)
   const [tasks, setTasks] = useState([])
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Form handleSubmit={handleSubmit} text={text} setText={setText} />
+      <Form handleSubmit={handleSubmit} text={text} />
       <TaskList tasks={tasks} toggleCheck={toggleCheck} removeTask={removeTask} />
     </div>
   );
