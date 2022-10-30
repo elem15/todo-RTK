@@ -1,20 +1,10 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import textReducer from './textSlice';
+import tasksReducer from './tasksSlice';
 
-const todoSlice = createSlice({
-  name: 'todo',
-  initialState: {
-    tasks: [],
-    text: ''
-  },
-  reducers: {
-    addText: (state, action) => {
-      state.text = action.payload;
-    }
+export default configureStore({
+  reducer: {
+    inputText: textReducer,
+    tasksList: tasksReducer
   }
 })
-
-export const { addText } = todoSlice.actions;
-export const store = configureStore({
-  reducer: todoSlice.reducer
-})
-
