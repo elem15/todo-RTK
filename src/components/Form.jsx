@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { addTask } from '../redux-store/tasksSlice';
+import { addNewTask } from '../redux-store/tasksSlice';
 import { addText } from '../redux-store/textSlice';
 
 export default function Form() {  
@@ -8,7 +8,7 @@ export default function Form() {
   const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(addTask(text))
+    dispatch(addNewTask(text))
   }
   return (
     <form onSubmit={handleSubmit}>
